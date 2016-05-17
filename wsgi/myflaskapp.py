@@ -10,7 +10,7 @@ app = Flask(__name__)
 #CORS(app)
 
 global registroAlunni 
-registroAlunni = {0:{"numeroReg":0,"nome":"ignoto","cognome":"ignoto","annoNascita":"1900"}}
+registroAlunni = {}
 
 @app.route("/")
 def hello():
