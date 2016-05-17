@@ -6,7 +6,9 @@ from flask import jsonify
 #from flask.ext.cors import CORS
 
 global registroAlunni
-registroAlunni = { 0: {"numeroReg" : '0', "nome" : 'nome',
+registroAlunni = { -1 : {"numeroReg" : '-1', "nome" : 'nome',
+                "cognome" : 'cognome', "annoNascita"  : 'annoNascita'},
+                    0: {"numeroReg" : '0', "nome" : 'nome',
                 "cognome" : 'cognome', "annoNascita"  : 'annoNascita'},
                   1: {"numeroReg" : '1', "nome" : 'nome',
                 "cognome" : 'cognome', "annoNascita"  : 'annoNascita'},
@@ -70,10 +72,10 @@ def alunnoByNumeroReg():
         if key > max:
             max = key
             
-    if int(numeroReg) < max:        
+    if int(numeroReg) <=  max:        
         dizAlunno = registroAlunni[int(numeroReg)]
     else:
-        dizAlunno = registroAlunni[0]
+        dizAlunno = registroAlunni[-1]
     # in casi piu' complessi usare render_templates e quindi jsonify
     stringJson = jsonify( ** dizAlunno)
     return stringJson   #aggiunge content-type => json
@@ -97,4 +99,4 @@ def inserisciAlunnoPOST():
     
 if __name__ == "__main__":
     #app.debug=True
-    app.run(debug=True, port=6501)
+    app.run(debug=True, port=6502)
