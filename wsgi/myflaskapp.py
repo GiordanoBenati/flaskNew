@@ -73,9 +73,10 @@ def alunnoByNumeroReg():
     #calcola il max numeroReg presente nel dizionario
     # se la richeista eccede il numero manda lo zero
     max = 0
-    for key in registr0Alunni:
+    for key in registrAlunni:
         if key > max:
             max = key
+            
     if numeroReg < max:        
         dizAlunno = registroAlunni[int(numeroReg)]
     else:
