@@ -48,6 +48,7 @@ def inserisciAlunno ():
     annoNascita =request.args.get('annoNascita') 
     dizAlunno = { "numeroReg": numeroReg, "nome": nome,
                   "cognome" : cognome , "annoNascita":annoNascita}
+    global registroAlunni              
     registroAlunni[int(numeroReg)]= dizAlunno
     return "OK"   #restituisce status = 200  OK , ma nessuna stringa
     
@@ -58,6 +59,7 @@ def alunnoByNumeroReg():
     
     numeroReg =  request.json['numeroReg']
     
+    global registroAlunni
     dizAlunno = registroAlunni[int(numeroReg)]
     # in casi piu' complessi usare render_templates e quindi jsonify
     stringJson = jsonify( ** dizAlunno)
@@ -73,7 +75,8 @@ def inserisciAlunnoPOST():
     
     dizAlunno = {"numeroReg" : numeroReg, "nome" : nome, 
                 "cognome" : cognome, "annoNascita"  : annoNascita}
-                
+    
+    global registroAlunni
     registroAlunni[int(numeroReg)]= dizAlunno
     print dizAlunno
     print registroAlunni[int(numeroReg)]
