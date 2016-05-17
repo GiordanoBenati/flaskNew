@@ -5,12 +5,23 @@ from flask import render_template
 from flask import jsonify
 #from flask.ext.cors import CORS
 
-
+global registroAlunni
+registroAlunni = { 0: {"numeroReg" : '0', "nome" : 'nome',
+                "cognome" : 'cognome', "annoNascita"  : 'annoNascita'},
+                  1: {"numeroReg" : '1', "nome" : 'nome',
+                "cognome" : 'cognome', "annoNascita"  : 'annoNascita'},
+                  2: {"numeroReg" : '2', "nome" : 'nome',
+                "cognome" : 'cognome', "annoNascita"  : 'annoNascita'}}
+    
+        
+        
+        
+    
 app = Flask(__name__)
 #CORS(app)
 
-global registroAlunni 
-registroAlunni = {}
+#global registroAlunni 
+#registroAlunni = {}
 
 @app.route("/")
 def hello():
@@ -70,4 +81,4 @@ def inserisciAlunnoPOST():
     
 if __name__ == "__main__":
     #app.debug=True
-    app.run(debug=True, port=65013)
+    app.run(debug=True, port=6500)
