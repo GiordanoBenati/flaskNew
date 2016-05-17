@@ -48,8 +48,18 @@ def inserisciAlunno ():
     annoNascita =request.args.get('annoNascita') 
     dizAlunno = { "numeroReg": numeroReg, "nome": nome,
                   "cognome" : cognome , "annoNascita":annoNascita}
+    
+    
+    #calcola il max numeroReg presente nel dizionario
+    # se la richeista eccede il numero manda lo zero
+    max = 0
+    for key in registr0Alunni:
+        if key > max:
+            max = key
+    
     global registroAlunni              
     registroAlunni[int(numeroReg)]= dizAlunno
+    
     return "OK"   #restituisce status = 200  OK , ma nessuna stringa
     
     
@@ -60,7 +70,16 @@ def alunnoByNumeroReg():
     numeroReg =  request.json['numeroReg']
     
     global registroAlunni
-    dizAlunno = registroAlunni[int(numeroReg)]
+    #calcola il max numeroReg presente nel dizionario
+    # se la richeista eccede il numero manda lo zero
+    max = 0
+    for key in registr0Alunni:
+        if key > max:
+            max = key
+    if numeroReg < max:        
+        dizAlunno = registroAlunni[int(numeroReg)]
+    else:
+        dizAlunno = registroAlunni[0]
     # in casi piu' complessi usare render_templates e quindi jsonify
     stringJson = jsonify( ** dizAlunno)
     return stringJson   #aggiunge content-type => json
