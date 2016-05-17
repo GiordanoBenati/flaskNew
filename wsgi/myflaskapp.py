@@ -50,13 +50,6 @@ def inserisciAlunno ():
                   "cognome" : cognome , "annoNascita":annoNascita}
     
     
-    #calcola il max numeroReg presente nel dizionario
-    # se la richeista eccede il numero manda lo zero
-    max = 0
-    for key in registr0Alunni:
-        if key > max:
-            max = key
-    
     global registroAlunni              
     registroAlunni[int(numeroReg)]= dizAlunno
     
@@ -73,11 +66,11 @@ def alunnoByNumeroReg():
     #calcola il max numeroReg presente nel dizionario
     # se la richeista eccede il numero manda lo zero
     max = 0
-    for key in registrAlunni:
+    for key in registroAlunni:
         if key > max:
             max = key
             
-    if numeroReg < max:        
+    if int(numeroReg) < max:        
         dizAlunno = registroAlunni[int(numeroReg)]
     else:
         dizAlunno = registroAlunni[0]
@@ -104,4 +97,4 @@ def inserisciAlunnoPOST():
     
 if __name__ == "__main__":
     #app.debug=True
-    app.run(debug=True, port=6500)
+    app.run(debug=True, port=6501)
