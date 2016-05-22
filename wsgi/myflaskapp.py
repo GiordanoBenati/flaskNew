@@ -8,10 +8,24 @@ import sqlite3
         
         
 app = Flask(__name__)
-#CORS(app)
 
-#global registroAlunni 
-#registroAlunni = {}
+
+def initDB():
+    # crea le tabelle del DB se non esistono
+    conn = sqlite3.connect('/data/Alunni.db')
+
+    stringSQLTableAlunni = \
+        "create table registroAlunni  if not exists(\
+            numeroReg integer primary key,\
+            nome      text not null,\
+            cognome   text not null,\
+            annoNascita text not null,\
+        );"
+    conn.execute(stringSQLTableAlunni)
+    conn.close()
+
+initDB()
+
 
 @app.route("/")
 def hello():

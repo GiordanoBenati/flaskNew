@@ -1,5 +1,5 @@
-drop table if exists registroAlunni;
-create table registroAlunni (
+
+create table registroAlunni  if not exists(
   numeroReg integer primary key,
   nome      text not null,
   cognome   text not null,
