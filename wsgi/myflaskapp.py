@@ -60,7 +60,7 @@ def alunnoByNumeroReg():
     numeroReg = request.json['numeroReg']
     print numeroReg,"numREG"
     
-        #apre connessione al DB per inserire un Alunno
+    #apre connessione al DB per inserire un Alunno
     
     conn = sqlite3.connect('../data/Alunni.db')
     print "Opened database successfully  ByNumero";
