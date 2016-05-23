@@ -26,7 +26,7 @@ def initDB():
     conn.commit()
     conn.close()
 
-initDB()
+#initDB()
 
 
 @app.route("/")
